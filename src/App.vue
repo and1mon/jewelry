@@ -4,11 +4,13 @@
     <header class="bg-white dark:bg-gray-800 shadow-sm">
       <div class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-            CD Inlay Generator
+          <h1 class="text-3xl font-bold">
+            <span class="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+              Jewelry
+            </span>
           </h1>
           <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            Create printable jewel case inserts with MusicBrainz integration
+            Create printable CD jewel case inserts
           </p>
         </div>
         <!-- Dark Mode Toggle -->
