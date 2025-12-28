@@ -269,6 +269,9 @@
         and
         <a href="https://coverartarchive.org" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">Cover Art Archive</a>
       </p>
+      <p class="mt-2 text-xs text-gray-400 dark:text-gray-500">
+        Anonymous analytics by <a href="https://www.goatcounter.com" target="_blank" class="hover:underline">GoatCounter</a> (no cookies, no personal data)
+      </p>
     </footer>
   </div>
 </template>
