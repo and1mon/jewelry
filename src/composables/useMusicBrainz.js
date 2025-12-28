@@ -4,7 +4,7 @@
 import { ref } from 'vue'
 
 const API_BASE = 'https://musicbrainz.org/ws/2'
-const USER_AGENT = 'CDInlayGenerator/1.0'
+const USER_AGENT = 'Jewelry/1.0 (https://github.com/and1mon/jewelry)'
 
 // Rate limiting: max 1 request per second for MusicBrainz
 let lastRequestTime = 0
