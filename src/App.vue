@@ -349,11 +349,9 @@ const dragOver = ref(null)
 const spineConfig = ref({
   backgroundColor: '#000000',
   textColor: '#ffffff',
-  artistName: '',
   artistColor: null,
   artistBold: false,
   artistItalic: false,
-  albumName: '',
   albumColor: null,
   albumBold: false,
   albumItalic: false,
@@ -388,8 +386,8 @@ const albumName = computed(() => {
 const effectiveSpineConfig = computed(() => {
   return {
     ...spineConfig.value,
-    artistName: spineConfig.value.artistName || artistName.value,
-    albumName: spineConfig.value.albumName || albumName.value,
+    artistName: artistName.value,
+    albumName: albumName.value,
   }
 })
 
@@ -449,8 +447,6 @@ const handleReleaseSelect = async (release) => {
   // Update album info
   manualArtistName.value = getMbArtistName(release)
   manualAlbumName.value = release.title || ''
-  spineConfig.value.artistName = ''
-  spineConfig.value.albumName = ''
   
   // Fetch cover art
   await fetchCoverArt(release.id)
@@ -472,8 +468,6 @@ const clearSelection = () => {
   backCover.value = null
   manualArtistName.value = ''
   manualAlbumName.value = ''
-  spineConfig.value.artistName = ''
-  spineConfig.value.albumName = ''
   leftEdgeColor.value = '#000000'
   rightEdgeColor.value = '#000000'
   backImageIncludesSpines.value = true
