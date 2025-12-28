@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- CD disc body -->
+  <circle cx="32" cy="32" r="30" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1"/>
+  
+  <!-- Rainbow reflection rings (subtle) -->
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#c4b5fd" stroke-width="0.5" opacity="0.6"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#a5f3fc" stroke-width="0.5" opacity="0.6"/>
+  <circle cx="32" cy="32" r="16" fill="none" stroke="#bbf7d0" stroke-width="0.5" opacity="0.6"/>
+  
+  <!-- Data area gradient effect -->
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#d1d5db" stroke-width="8" opacity="0.5"/>
+  
+  <!-- Center hole -->
+  <circle cx="32" cy="32" r="6" fill="#374151"/>
+  
+  <!-- Center ring (label area edge) -->
+  <circle cx="32" cy="32" r="10" fill="none" stroke="#9ca3af" stroke-width="0.5"/>
+  
+  <!-- Shine/reflection -->
+  <ellipse cx="22" cy="22" rx="8" ry="4" fill="white" opacity="0.4" transform="rotate(-45 22 22)"/>
+</svg>
