@@ -242,30 +242,10 @@ const drawSpineTextColored = (doc, textParts, x, y, height, fontSize, alignment 
     doc.setFont('helvetica', getFontStyle(albumBold, albumItalic))
     const albumWidth = doc.getTextWidth(album)
     
-    console.log('Multi-color spine debug:', {
-      artist, album, separator,
-      artistWidth, separatorWidth, albumWidth,
-      sum: artistWidth + separatorWidth + albumWidth,
-      totalTextWidth,
-      textY, angle, height, y,
-      adjustedX,
-      spineTop: y,
-      spineBottom: y + height,
-    })
-    
     if (angle === -90) {
       // Text DRAWS downward from anchor, READS bottom-to-top
       // Artist first (at top/lowest Y), then separator, then album (at bottom/highest Y)
       let currentY = textY
-      
-      console.log('Drawing -90 angle:', { 
-        artistAt: currentY, 
-        sepAt: currentY + artistWidth,
-        albumAt: currentY + artistWidth + separatorWidth,
-        albumEndsAt: currentY + artistWidth + separatorWidth + albumWidth,
-        spineTop: y,
-        spineBottom: y + height
-      })
       
       // Artist (reads first from bottom, but drawn first at top)
       const artistRgb = hexToRgb(artistColor)
@@ -290,15 +270,6 @@ const drawSpineTextColored = (doc, textParts, x, y, height, fontSize, alignment 
       // Angle 90: Text DRAWS upward from anchor, READS top-to-bottom
       // Artist first (at bottom/highest Y), then separator, then album (at top/lowest Y)
       let currentY = textY
-      
-      console.log('Drawing 90 angle:', { 
-        artistAt: currentY, 
-        sepAt: currentY - artistWidth,
-        albumAt: currentY - artistWidth - separatorWidth,
-        albumEndsAt: currentY - artistWidth - separatorWidth - albumWidth,
-        spineTop: y,
-        spineBottom: y + height
-      })
       
       // Artist (reads first from top, but drawn first at bottom)
       const artistRgb = hexToRgb(artistColor)
@@ -594,8 +565,6 @@ export function usePdfExport() {
       const rightRotation = spine.rightRotation || 'top-to-bottom'
       const leftAngle = leftRotation === 'bottom-to-top' ? 90 : -90
       const rightAngle = rightRotation === 'top-to-bottom' ? -90 : 90
-      
-      console.log('Spine text - Artist:', spineArtist, 'Album:', spineAlbum, 'Separator:', separator)
       
       if (spineArtist || spineAlbum) {
         // Prepare text parts with colors and styles

@@ -295,38 +295,27 @@ export function useCoverArt() {
       // Fetch front cover
       if (frontImage) {
         const frontUrl = getBestImageUrl(frontImage)
-        console.log('Front image URL:', frontUrl)
         if (frontUrl) {
           try {
             frontCover.value = await imageUrlToDataUrl(frontUrl)
             hasFrontCover.value = true
-            console.log('Front cover loaded successfully')
           } catch (e) {
-            console.error('Failed to fetch front cover:', e)
             error.value = `Failed to load front cover: ${e.message}`
           }
-        } else {
-          console.warn('No URL found for front image:', frontImage)
         }
-      } else {
-        console.warn('No front image found in response')
       }
       
       // Fetch back cover
       if (backImage) {
         const backUrl = getBestImageUrl(backImage)
-        console.log('Back image URL:', backUrl)
         if (backUrl) {
           try {
             backCover.value = await imageUrlToDataUrl(backUrl)
             hasBackCover.value = true
-            console.log('Back cover loaded successfully')
             
             // Detect format based on aspect ratio
             const dimensions = await getImageDimensions(backCover.value)
-            console.log('Back cover dimensions:', dimensions)
             backCoverFormat.value = detectBackCoverFormat(dimensions.width, dimensions.height)
-            console.log('Detected back cover format:', backCoverFormat.value)
             
             // If no spines, extract edge colors for generated spines
             if (backCoverFormat.value === 'without-spines') {
@@ -338,16 +327,11 @@ export function useCoverArt() {
               const avgColor = averageColors(leftColor, rightColor)
               detectedSpineColor.value = avgColor
               detectedSpineTextColor.value = getContrastingTextColor(avgColor)
-              console.log('Detected edge colors - Left:', leftColor, 'Right:', rightColor, 'Spine:', avgColor)
             }
           } catch (e) {
-            console.error('Failed to fetch back cover:', e)
+            // Back cover fetch failed silently - not critical
           }
-        } else {
-          console.warn('No URL found for back image:', backImage)
         }
-      } else {
-        console.log('No back image found in response (this is common)')
       }
       
       if (!hasFrontCover.value) {
