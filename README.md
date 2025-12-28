@@ -42,6 +42,7 @@ npm run build
 
 - Album data from [MusicBrainz](https://musicbrainz.org)
 - Cover art from [Cover Art Archive](https://coverartarchive.org)
+- Built with assistance from [GitHub Copilot](https://github.com/features/copilot)
 
 ## License
 
