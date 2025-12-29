@@ -14,14 +14,14 @@
           </p>
         </div>
         <!-- Dark Mode Toggle -->
-        <button
-          @click="toggleDarkMode"
+        <button @click="toggleDarkMode"
           class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-          :title="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
-        >
+          :title="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
           <!-- Sun icon (show in dark mode) -->
           <svg v-if="isDarkMode" class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              clip-rule="evenodd" />
           </svg>
           <!-- Moon icon (show in light mode) -->
           <svg v-else class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
@@ -30,7 +30,7 @@
         </button>
       </div>
     </header>
-    
+
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 py-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -39,16 +39,12 @@
           <!-- MusicBrainz Search -->
           <div class="space-y-4">
             <AlbumSearch @select="handleReleaseSelect" />
-            
+
             <!-- Selected Release Info -->
-            <div v-if="selectedRelease" class="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+            <div v-if="selectedRelease"
+              class="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
               <div class="flex items-start gap-3">
-                <img 
-                  v-if="frontCover" 
-                  :src="frontCover" 
-                  alt="Cover" 
-                  class="w-16 h-16 object-cover rounded shadow"
-                />
+                <img v-if="frontCover" :src="frontCover" alt="Cover" class="w-16 h-16 object-cover rounded shadow" />
                 <div class="flex-1 min-w-0">
                   <p class="font-semibold text-gray-900 dark:text-white truncate">
                     {{ selectedRelease.title }}
@@ -60,150 +56,108 @@
                     {{ selectedRelease.date }}
                   </p>
                 </div>
-                <button
-                  @click="clearSelection"
-                  class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                  title="Clear selection"
-                >
+                <button @click="clearSelection" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  title="Clear selection">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
-              
+
               <!-- Loading indicator -->
-              <div v-if="isLoadingCoverArt" class="mt-3 flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
+              <div v-if="isLoadingCoverArt"
+                class="mt-3 flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
                 <svg class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                  </path>
                 </svg>
                 Loading cover art...
               </div>
             </div>
           </div>
-          
+
           <!-- Cover Art Section -->
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300">Cover Art</h3>
               <!-- Swap Button -->
-              <button
-                v-if="frontCover || backCover"
-                @click="swapCovers"
+              <button v-if="frontCover || backCover" @click="swapCovers"
                 class="flex items-center gap-1 px-2 py-1 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                title="Swap front and back covers"
-              >
+                title="Swap front and back covers">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                 </svg>
                 Swap
               </button>
             </div>
-            
+
             <div class="grid grid-cols-2 gap-4">
               <!-- Front Cover -->
               <div class="space-y-2">
                 <label class="block text-xs text-gray-600 dark:text-gray-400">Front Cover</label>
-                <div
-                  @click="triggerFrontUpload"
-                  @dragover.prevent="dragOver = 'front'"
-                  @dragleave="dragOver = null"
-                  @drop.prevent="handleDrop($event, 'front')"
-                  :class="[
+                <div @click="triggerFrontUpload" @dragover.prevent="dragOver = 'front'" @dragleave="dragOver = null"
+                  @drop.prevent="handleDrop($event, 'front')" :class="[
                     'relative aspect-square border-2 border-dashed rounded-lg cursor-pointer transition-colors overflow-hidden',
-                    dragOver === 'front' 
-                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' 
+                    dragOver === 'front'
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                       : 'border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-500'
-                  ]"
-                >
-                  <img 
-                    v-if="frontCover" 
-                    :src="frontCover" 
-                    alt="Front cover" 
-                    class="w-full h-full object-cover"
-                  />
-                  <div v-else class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
+                  ]">
+                  <img v-if="frontCover" :src="frontCover" alt="Front cover" class="w-full h-full object-cover" />
+                  <div v-else
+                    class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     <span class="text-xs mt-1">Add front</span>
                   </div>
                   <!-- Clear button -->
-                  <button
-                    v-if="frontCover"
-                    @click.stop="frontCover = null"
+                  <button v-if="frontCover" @click.stop="frontCover = null"
                     class="absolute top-1 right-1 p-1 bg-black/50 rounded-full text-white hover:bg-black/70"
-                    title="Remove front cover"
-                  >
+                    title="Remove front cover">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
-                <input
-                  ref="frontInput"
-                  type="file"
-                  accept="image/*"
-                  class="hidden"
-                  @change="handleFrontUpload"
-                />
+                <input ref="frontInput" type="file" accept="image/*" class="hidden" @change="handleFrontUpload" />
               </div>
-              
+
               <!-- Back Cover -->
               <div class="space-y-2">
                 <label class="block text-xs text-gray-600 dark:text-gray-400">Back Cover</label>
-                <div
-                  @click="triggerBackUpload"
-                  @dragover.prevent="dragOver = 'back'"
-                  @dragleave="dragOver = null"
-                  @drop.prevent="handleDrop($event, 'back')"
-                  :class="[
+                <div @click="triggerBackUpload" @dragover.prevent="dragOver = 'back'" @dragleave="dragOver = null"
+                  @drop.prevent="handleDrop($event, 'back')" :class="[
                     'relative aspect-square border-2 border-dashed rounded-lg cursor-pointer transition-colors overflow-hidden',
-                    dragOver === 'back' 
-                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' 
+                    dragOver === 'back'
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                       : 'border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-500'
-                  ]"
-                >
-                  <img 
-                    v-if="backCover" 
-                    :src="backCover" 
-                    alt="Back cover" 
-                    class="w-full h-full object-cover"
-                  />
-                  <div v-else class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
+                  ]">
+                  <img v-if="backCover" :src="backCover" alt="Back cover" class="w-full h-full object-cover" />
+                  <div v-else
+                    class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     <span class="text-xs mt-1">Add back</span>
                   </div>
                   <!-- Clear button -->
-                  <button
-                    v-if="backCover"
-                    @click.stop="backCover = null; backImageIncludesSpines = true"
+                  <button v-if="backCover" @click.stop="backCover = null; backImageIncludesSpines = true"
                     class="absolute top-1 right-1 p-1 bg-black/50 rounded-full text-white hover:bg-black/70"
-                    title="Remove back cover"
-                  >
+                    title="Remove back cover">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
-                <input
-                  ref="backInput"
-                  type="file"
-                  accept="image/*"
-                  class="hidden"
-                  @change="handleBackUpload"
-                />
-                
+                <input ref="backInput" type="file" accept="image/*" class="hidden" @change="handleBackUpload" />
+
                 <!-- Spine included checkbox -->
                 <div v-if="backCover" class="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    id="spineIncluded"
-                    v-model="backImageIncludesSpines"
-                    class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                  />
+                  <input type="checkbox" id="spineIncluded" v-model="backImageIncludesSpines"
+                    class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500" />
                   <label for="spineIncluded" class="text-xs text-gray-600 dark:text-gray-400">
                     Includes spine areas
                   </label>
@@ -211,66 +165,58 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Album Info (always visible for spine text) -->
           <div class="space-y-4 pt-4 border-t border-gray-200 dark:border-gray-700">
             <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300">Album Information</h3>
-            
+
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs text-gray-600 dark:text-gray-400 mb-1">Artist Name</label>
-                <input
-                  v-model="manualArtistName"
-                  type="text"
-                  placeholder="Artist name"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
-                />
+                <input v-model="manualArtistName" type="text" placeholder="Artist name"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
               </div>
               <div>
                 <label class="block text-xs text-gray-600 dark:text-gray-400 mb-1">Album Name</label>
-                <input
-                  v-model="manualAlbumName"
-                  type="text"
-                  placeholder="Album name"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
-                />
+                <input v-model="manualAlbumName" type="text" placeholder="Album name"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white" />
               </div>
             </div>
           </div>
-          
+
           <!-- Spine Editor (when back cover doesn't include spines OR no back cover) -->
           <div v-if="!backCover || !backImageIncludesSpines">
             <SpineEditor v-model="spineConfig" />
           </div>
         </div>
-        
+
         <!-- Right Column: Preview -->
         <div class="lg:sticky lg:top-8 lg:self-start">
-          <Preview
-            :front-cover="frontCover"
-            :back-cover="backCover"
-            :back-image-includes-spines="backImageIncludesSpines"
-            :spine-config="effectiveSpineConfig"
-            :artist-name="artistName"
-            :album-name="albumName"
-            :warnings="warnings"
-            :left-edge-color="leftEdgeColor"
-            :right-edge-color="rightEdgeColor"
-          />
+          <Preview :front-cover="frontCover" :back-cover="backCover"
+            :back-image-includes-spines="backImageIncludesSpines" :spine-config="effectiveSpineConfig"
+            :artist-name="artistName" :album-name="albumName" :warnings="warnings" :left-edge-color="leftEdgeColor"
+            :right-edge-color="rightEdgeColor" />
         </div>
       </div>
     </main>
-    
+
     <!-- Footer -->
     <footer class="mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
       <p>
-        Data provided by 
-        <a href="https://musicbrainz.org" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">MusicBrainz</a>
+        Data provided by
+        <a href="https://musicbrainz.org" target="_blank"
+          class="text-blue-600 hover:underline dark:text-blue-400">MusicBrainz</a>
         and
-        <a href="https://coverartarchive.org" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">Cover Art Archive</a>
+        <a href="https://coverartarchive.org" target="_blank"
+          class="text-blue-600 hover:underline dark:text-blue-400">Cover Art Archive</a>
+      </p>
+      <p class="mt-2">
+        Check out the code on <a href="https://github.com/And1mon/jewelry" target="_blank"
+          class="text-blue-600 hover:underline dark:text-blue-400">GitHub</a>
       </p>
       <p class="mt-2 text-xs text-gray-400 dark:text-gray-500">
-        Anonymous analytics by <a href="https://www.goatcounter.com" target="_blank" class="hover:underline">GoatCounter</a> (no cookies, no personal data)
+        Anonymous analytics by <a href="https://www.goatcounter.com" target="_blank"
+          class="hover:underline">GoatCounter</a> (no cookies, no personal data)
       </p>
     </footer>
   </div>
@@ -309,11 +255,11 @@ onMounted(() => {
 const { addRecentAlbum } = useRecentAlbums()
 
 // MusicBrainz
-const { 
-  selectedRelease, 
-  getReleaseDetails, 
+const {
+  selectedRelease,
+  getReleaseDetails,
   getArtistName: getMbArtistName,
-  clearSelection: clearMbSelection 
+  clearSelection: clearMbSelection
 } = useMusicBrainz()
 
 // Cover Art
@@ -393,7 +339,7 @@ const effectiveSpineConfig = computed(() => {
 
 const warnings = computed(() => {
   const w = []
-  
+
   if (selectedRelease.value && !isLoadingCoverArt.value) {
     if (!hasFrontCover.value && !frontCover.value) {
       w.push('No front cover available for this release')
@@ -402,7 +348,7 @@ const warnings = computed(() => {
       w.push('No back cover available - using template with spine configuration')
     }
   }
-  
+
   return w
 })
 
@@ -440,17 +386,17 @@ watch([detectedSpineColor, detectedLeftEdgeColor, detectedRightEdgeColor], () =>
 const handleReleaseSelect = async (release) => {
   // Clear previous covers (but keep manual overrides if user uploaded)
   clearCoverArt()
-  
+
   // Fetch release details
   await getReleaseDetails(release.id)
-  
+
   // Update album info
   manualArtistName.value = getMbArtistName(release)
   manualAlbumName.value = release.title || ''
-  
+
   // Fetch cover art
   await fetchCoverArt(release.id)
-  
+
   // Add to recent albums
   addRecentAlbum({
     id: release.id,
@@ -478,7 +424,7 @@ const swapCovers = () => {
   const temp = frontCover.value
   frontCover.value = backCover.value
   backCover.value = temp
-  
+
   // If swapping, the new back cover probably doesn't include spines
   if (backCover.value) {
     backImageIncludesSpines.value = false
@@ -552,7 +498,7 @@ const detectBackCoverColors = async (dataUrl) => {
     const rightColor = await extractEdgeColor(dataUrl, 'right')
     leftEdgeColor.value = leftColor
     rightEdgeColor.value = rightColor
-    
+
     // Average for spine background
     const avgColor = averageHexColors(leftColor, rightColor)
     spineConfig.value.backgroundColor = avgColor
@@ -574,26 +520,26 @@ const extractEdgeColor = (dataUrl, edge = 'left') => {
       canvas.width = img.width
       canvas.height = img.height
       ctx.drawImage(img, 0, 0)
-      
+
       const sampleWidth = Math.max(5, Math.floor(img.width * 0.01))
       const x = edge === 'left' ? 0 : img.width - sampleWidth
-      
+
       const imageData = ctx.getImageData(x, 0, sampleWidth, img.height)
       const pixels = imageData.data
-      
+
       let totalR = 0, totalG = 0, totalB = 0
       const pixelCount = pixels.length / 4
-      
+
       for (let i = 0; i < pixels.length; i += 4) {
         totalR += pixels[i]
         totalG += pixels[i + 1]
         totalB += pixels[i + 2]
       }
-      
+
       const r = Math.round(totalR / pixelCount)
       const g = Math.round(totalG / pixelCount)
       const b = Math.round(totalB / pixelCount)
-      
+
       const hex = '#' + [r, g, b].map(c => c.toString(16).padStart(2, '0')).join('')
       resolve(hex)
     }
@@ -605,11 +551,11 @@ const extractEdgeColor = (dataUrl, edge = 'left') => {
 const averageHexColors = (hex1, hex2) => {
   const c1 = hex1.replace('#', '')
   const c2 = hex2.replace('#', '')
-  
+
   const r = Math.round((parseInt(c1.substr(0, 2), 16) + parseInt(c2.substr(0, 2), 16)) / 2)
   const g = Math.round((parseInt(c1.substr(2, 2), 16) + parseInt(c2.substr(2, 2), 16)) / 2)
   const b = Math.round((parseInt(c1.substr(4, 2), 16) + parseInt(c2.substr(4, 2), 16)) / 2)
-  
+
   return '#' + [r, g, b].map(c => c.toString(16).padStart(2, '0')).join('')
 }
 
